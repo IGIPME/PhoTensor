@@ -1,0 +1,13 @@
+{
+   "nixEnvPicker.envFile": "${workspaceFolder}${/}flake.nix",
+   "nixEnvPicker.terminalAutoActivate": true,
+   "nixEnvPicker.terminalActivateCommand": "nix develop",
+   "nixEnvPicker.customEnvVars": {
+      "set": {
+         "ENV_VARIABLE": "VALUE"
+      },
+      "unset": [
+         "ENV_VARIABLE_TO_UNSET"
+      ]
+   }
+}
