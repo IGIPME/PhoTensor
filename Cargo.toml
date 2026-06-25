@@ -5,6 +5,8 @@ members = [
     "src/hw",
     "src/burn",
     "src/macros",
+    "src/pyphotensor",
+    "src/photensor"
 ]
 resolver = "2"
 
@@ -12,5 +14,5 @@ resolver = "2"
 version = "0.1.0"
 edition = "2024"
 authors = ["Xuan Zou"]
-liense = "GPLv3.0"
+license-file = "LICENSE"
 repository = "https://github.com/IGIPME/PhoTensor"

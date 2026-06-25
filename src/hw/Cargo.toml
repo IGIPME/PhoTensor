@@ -4,6 +4,6 @@ description = "The hardware abstraction layer of PhoTensor"
 authors.workspace = true
 version.workspace = true
 edition.workspace = true
-license.workspace = true
+license-file.workspace = true
 
 [dependencies]

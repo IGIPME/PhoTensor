@@ -4,6 +4,6 @@ description = "The top-level package and user portal of PhoTensor"
 authors.workspace = true
 version.workspace = true
 edition.workspace = true
-license.workspace = true
+license-file.workspace = true
 
 [dependencies]

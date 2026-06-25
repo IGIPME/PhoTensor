@@ -44,6 +44,7 @@
 
                         # Python
                         python3
+                        python3Packages.twine
 
                         # Node.js runtime
                         nodejs
@@ -57,6 +58,8 @@
                     ];
 
                     shellHook = ''
+                        unset _PYTHON_HOST_PLATFORM
+
                         # Print current environment information
                         echo "Rust + Python + pnpm dev environment"
                         echo "Rust version: $(rustc --version)"
