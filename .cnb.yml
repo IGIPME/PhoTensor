@@ -1,0 +1,72 @@
+# PhoTensor CI/CD 配置
+# Nix flakes 开发环境 + Rust workspace
+
+# ── 公共配置（YAML 锚点） ─────────────────────────
+.nix-env: &nix-env
+  docker:
+    build:
+      dockerfile: ./Dockerfile
+    volumes:
+      - cargo_cache:/root/.cargo:rw
+      - target:/workspace/target:rw
+  services:
+    - docker
+
+# ── 主分支 push：构建 + 测试 ──────────────────────
+main:
+  push:
+    build-and-test:
+      <<: *nix-env
+      name: build-and-test
+      stages:
+        - name: nix-develop
+          script: |
+            nix develop --command bash -c '
+              echo "=== Rust Toolchain ==="
+              rustc --version
+              cargo --version
+              echo "=== Python ==="
+              python --version
+              echo "=== Node.js ==="
+              node --version
+              pnpm --version
+            '
+        - name: cargo-build
+          script: |
+            nix develop --command cargo build --workspace
+        - name: cargo-test
+          script: |
+            nix develop --command cargo test --workspace
+        - name: cargo-clippy
+          script: |
+            nix develop --command cargo clippy --workspace --all-targets -- -D warnings
+        - name: cargo-fmt-check
+          script: |
+            nix develop --command cargo fmt --all -- --check
+
+# ── 所有分支 PR：检查 ─────────────────────────────
+"**":
+  pull_request:
+    pr-check:
+      <<: *nix-env
+      name: pr-check
+      stages:
+        - name: cargo-build
+          script: |
+            nix develop --command cargo build --workspace
+        - name: cargo-test
+          script: |
+            nix develop --command cargo test --workspace
+        - name: cargo-clippy
+          script: |
+            nix develop --command cargo clippy --workspace --all-targets -- -D warnings
+        - name: cargo-fmt-check
+          script: |
+            nix develop --command cargo fmt --all -- --check
+        - name: docs-build
+          script: |
+            nix develop --command bash -c '
+              cd docs
+              pnpm install
+              pnpm run build
+            '
