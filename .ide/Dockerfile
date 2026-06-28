@@ -1,16 +1,11 @@
-# .ide/Dockerfile
-# 使用一个包含 Nix 的基础镜像
 FROM nixos/nix:latest
 
 # 设置环境变量，避免 Nix 在构建时产生过多的 .nix 文件
 ENV NIX_CONFIG="experimental-features = nix-command flakes"
 
 # 创建工作目录
+COPY . /workspace
 WORKDIR /workspace
-
-# 将项目中的 flake.nix 和 flake.lock 复制到镜像中
-# 这样 Nix 就可以根据这些文件来构建环境
-COPY flake.nix flake.lock /workspace/
 
 # 使用 Nix 构建开发环境，并将所有依赖安装到系统 PATH 中
 # nix develop 会创建一个包含所有 buildInputs 的 shell 环境
