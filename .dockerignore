@@ -1,0 +1,21 @@
+# Rust build artifacts
+target/
+**/*.rs.bk
+
+# Node
+docs/node_modules/
+docs/dist/
+docs/doc_build/
+
+# Git
+.git/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+
+# Local
+tmp/
+*.log
+Token.txt
