@@ -8,9 +8,9 @@ $:
       # 使用 Docker 构建自定义开发环境镜像
       docker:
         build:
-          # 指定 Dockerfile 所在路径
-          dockerfile: .ide/Dockerfile
-          # 构建上下文路径
+          # 指定 Dockerfile 所在路径（位于仓库根目录）
+          dockerfile: Dockerfile
+          # 构建上下文路径（仓库根目录）
           context: .
       # 声明云原生开发所需的服务
       services:

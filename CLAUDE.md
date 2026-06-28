@@ -8,7 +8,7 @@ PhoTensor is a Rust workspace for photonic neural networks — a unified framewo
 
 ## Environment
 
-All tooling is pinned via Nix flakes (`flake.nix`). Enter the dev shell with `nix develop` (also the default container CMD in `.ide/Dockerfile`). The shell provides: pinned Rust toolchain (`rust-toolchain.toml`: 1.96.0 with rustfmt, clippy, rust-src, rust-analyzer, x86_64-unknown-linux-gnu target), `maturin`, Python 3 + `twine`, Node.js 24, `pnpm`, `clang`/`lld` (used as the linker via `.cargo/config.toml`).
+All tooling is pinned via Nix flakes (`flake.nix`). Enter the dev shell with `nix develop` (also the default container CMD in the root `Dockerfile`, used by Tencent Cloud CNB via `.cnb.yml`). The shell provides: pinned Rust toolchain (`rust-toolchain.toml`: 1.96.0 with rustfmt, clippy, rust-src, rust-analyzer, x86_64-unknown-linux-gnu target), `maturin`, Python 3 + `twine`, Node.js 24, `pnpm`, `clang`/`lld` (used as the linker via `.cargo/config.toml`).
 
 Toolchain and linker are pinned — do not run `rustup` overrides or change the linker; `.cargo/config.toml` forces `clang` + `lld` for the `x86_64-unknown-linux-gnu` target.
 
