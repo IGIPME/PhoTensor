@@ -6,7 +6,7 @@ members = [
     "src/burn",
     "src/macros",
     "src/pyphotensor",
-    "src/photensor"
+    "src/photensor",
 ]
 resolver = "2"
 
