@@ -1,0 +1,18 @@
+# Phantom project-wide Clippy lint thresholds.
+# Paired with `-D warnings` in CI: keep the pedantic floor without
+# writing long #[allow] lists in every crate.
+
+# Cognitive complexity per function — the MZI mesh engine and GDS flattener
+# intentionally have a few long match arms; 30 keeps them honest without
+# forcing artificial splits.
+cognitive-complexity-threshold = 30
+
+# Type complexity — allow modestly nested types (Vec<Vec<Complex64>> is common
+# in the sim crate's mesh API and oxiphoton interop).
+type-complexity-threshold = 250
+
+# Single-result enums (Result/Error types) tend to grow in the layout layer.
+enum-variant-size-threshold = 256
+
+# Encourage `Default` on config-style structs throughout the workspace.
+# (No threshold file is required; this is documentation of intent.)

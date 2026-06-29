@@ -1,10 +1,16 @@
 [package]
 name = "photensor-sim"
-description = "The simulation module of PhoTensor"
-authors.workspace = true
 version.workspace = true
 edition.workspace = true
+authors.workspace = true
 license-file.workspace = true
+repository.workspace = true
+description = "Pure-software photonic neural network simulator for PhoTensor."
 
 [dependencies]
-oxiphoton = "0.1.2"
+oxiphoton = { workspace = true }
+num-complex = "0.4"
+thiserror = "2"
+
+[dev-dependencies]
+approx = "0.5"

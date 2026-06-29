@@ -1,0 +1,10 @@
+# Phantom photonic simulator formatting policy.
+# Stable-compatible: no nightly-only keys (imports_granularity/group_imports)
+# so `cargo fmt --check` works on the pinned stable toolchain (1.96).
+edition = "2024"
+max_width = 100
+use_field_init_shorthand = true
+use_try_shorthand = true
+newline_style = "Unix"
+reorder_imports = true
+reorder_modules = true
